@@ -7,7 +7,9 @@
 
 # Expenses-Tracker-WebApp
 ## Overview
-The Expenses Tracker App is a robust financial management solution developed using cutting-edge technologies such as Spring Boot, Spring Security, and MySQL. With user authentication and authorization features, users can securely sign up, sign in, and perform CRUD operations on their expenses. The app's intuitive interface, powered by Thymeleaf and Bootstrap, ensures a seamless user experience. The filtering functionality allows users to efficiently organize and analyze their financial data. Explore the power of streamlined expense tracking and financial control with this feature-rich application.<br> (Screenshots below for more illustration)
+The Expenses Tracker App is a smart and secure way to manage your daily finances. Built using Spring Boot, Spring Security, and MySQL, this app lets users easily track, organize, and analyze their expenses — all in one place.
+
+With a clean and user-friendly interface powered by Thymeleaf and Bootstrap, it’s designed to make expense management effortless and enjoyable.
 
 ## Technologies Used
 - Java
@@ -20,16 +22,19 @@ The Expenses Tracker App is a robust financial management solution developed usi
 - Bootstrap
 
 ## Features
-- **User Authentication and Authorization:** Securely sign up, sign in, and access the app with built-in authentication and authorization.
-- **CRUD Operations:** Perform essential financial tracking actions such as adding, reading, updating, and deleting expenses.
-- **Filtering:** Utilize the filtering feature to efficiently sort and view expenses based on various criteria.
+✅ Secure Login & Signup – User authentication and authorization ensure your data stays protected.
+✅ Full CRUD Functionality – Add, view, edit, or delete your expenses with ease.
+✅ Smart Filtering – Quickly find and analyze expenses using flexible filters.
+✅ Responsive UI – Enjoy a smooth experience on both desktop and mobile devices.
 
 ## Getting Started
 1. **Clone the Repository:**
 `git clone https://github.com/your-username/expenses-tracker.git`
 
 2. **Configure Database:**
-Set up MySQL database and update the application.properties file with your database configuration.
+Create a MySQL database.
+
+Update your application.properties file with the database name, username, and password.
 
 3. **Build and Run:**
 Build the project using your preferred IDE or with Maven:
@@ -41,7 +46,7 @@ Build the project using your preferred IDE or with Maven:
 5. **Access the App:**
 Open your web browser and navigate to `http://localhost:8080`.
 
-## ScreenShots
+## 📸 Check out the screenshots below for a quick preview of how it looks!
 ![Example Image](screenshots/1.png) <br>
 ![Example Image](screenshots/2-2.png) <br>
 ![Example Image](screenshots/3-3.png) <br>
