@@ -1,40 +1,45 @@
-version: "3.8"
+version: "3.9"
 services:
   mysql:
-    image: mysql:latest
     container_name: mysql
+    image: mysql
     environment:
       MYSQL_ROOT_PASSWORD: Test@123
       MYSQL_DATABASE: expenses_tracker
-    volumes:
-      - ./mysql-data:/var/lib/mysql
-    networks:
-      - appbridge
-    healthcheck:
-      test: ["CMD","mysqladmin","ping","-h","localhost","-uroot","-pTest@123"]
-      interval: 10s
-      timeout: 5s
-      retries: 5
-      start_period: 30s
     restart: always
+    networks:
+      - expense-nw
+    volumes:
+      - ./mydb-data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-uroot", "-pTest@123"]
+      interval: 6s
+      timeout: 5s
+      retries: 3
 
   mainapp:
-    image: snehcreate/expensetracker_v3
-    container_name: Expensetracker
-    environment:
-      SPRING_DATASOURCE_USERNAME: root
-      SPRING_DATASOURCE_URL: "jdbc:mysql://mysql:3306/expenses_tracker?allowPublicKeyRetrieval=true&useSSL=false"
-      SPRING_DATASOURCE_PASSWORD: Test@123
+    container_name: expensesapp
+    build:
+      context: .
     ports:
       - "8080:8080"
+    restart: always
     networks:
-      - appbridge
+      - expense-nw
+    healthcheck:
+      test: ["CMD", "curl -f http://localhost:8080/admin || exit 1"]
+      interval: 5s
+      timeout: 6s
+      retries: 3
     depends_on:
       - mysql
-    restart: always
+    environment:
+      spring_datasource_url: "jdbc:mysql://mysql:3306/expenses_tracker?allowPublicKeyRetrieval=true&useSSL=false"
+      spring_datasource_username: root
+      spring_datasource_password: Test@123
 
 networks:
-  appbridge:
-
+  expense-nw:
+    driver: bridge
 volumes:
-  mysql-data:
+  mydb-data:
